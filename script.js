@@ -1,28 +1,11 @@
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}}));
-
 const modal=document.querySelector('#downloadModal');
-const openButtons=document.querySelectorAll('.download-trigger');
-const closeButtons=document.querySelectorAll('[data-close-download]');
-const fileButton=document.querySelector('#downloadFileButton');
-
-function openDownload(){
-  if(!modal)return;
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden','false');
-  document.body.classList.add('modal-open');
-  modal.querySelector('.modal-close')?.focus();
-}
-function closeDownload(){
-  if(!modal)return;
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden','true');
-  document.body.classList.remove('modal-open');
-}
-openButtons.forEach(button=>button.addEventListener('click',openDownload));
-closeButtons.forEach(button=>button.addEventListener('click',closeDownload));
-document.addEventListener('keydown',event=>{if(event.key==='Escape')closeDownload()});
-fileButton?.addEventListener('click',()=>{
-  fileButton.textContent='Instalador em breve';
-  fileButton.disabled=true;
-  fileButton.style.opacity='.65';
-});
+function openDownload(){if(!modal)return;modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');}
+function closeDownload(){if(!modal)return;modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open');}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}}));
+document.querySelectorAll('.download-trigger').forEach(b=>b.addEventListener('click',openDownload));
+document.querySelectorAll('[data-close-download]').forEach(b=>b.addEventListener('click',closeDownload));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDownload()});
+const fileButton=document.querySelector('#downloadFileButton');fileButton?.addEventListener('click',()=>{fileButton.textContent='Instalador em breve';fileButton.disabled=true;fileButton.style.opacity='.65'});
+const downloadSection=document.querySelector('.download-section');
+if(downloadSection){downloadSection.innerHTML='<div class="eyebrow">DOWNLOAD OFICIAL</div><h2>Baixe o <em>Titan Turbo</em></h2><p>O Titan Turbo já está disponível. Baixe o instalador oficial e entre com sua conta para começar.</p><div class="download-actions"><button class="buy download-trigger" type="button">⇩ &nbsp; Baixar Titan Turbo</button><span class="download-badge">✓ &nbsp; 100% LIVRE DE MALWARE</span></div><div class="download-notice"><strong>▣</strong><div><b>Ainda não tem uma key?</b><small>Escolha o período de acesso ideal para liberar o catálogo completo.</small></div><a class="buy" href="#planos">Confira os planos</a></div><div class="download-cards"><article><strong>▣</strong><b>Windows 10 ou 11</b><small>Instalador único, 64-bit, sem exigir versão específica.</small></article><article><strong>↟</strong><b>Reversível por padrão</b><small>Ponto de restauração criado automaticamente antes de aplicar.</small></article><article><strong>▤</strong><b>Qualquer CPU/GPU</b><small>Nvidia, AMD ou Intel; 100% compatível, sem requisitos pesados.</small></article></div>';downloadSection.querySelectorAll('.download-trigger').forEach(b=>b.addEventListener('click',openDownload));downloadSection.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}}));}
+const css=document.createElement('style');css.textContent='.download-section{max-width:1000px;padding-top:110px;padding-bottom:110px;text-align:center}.download-section h2{font-size:clamp(42px,5vw,64px);margin-bottom:22px}.download-actions{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin:28px 0 30px}.download-badge{padding:13px 18px;border:1px solid #0a536f;border-radius:22px;color:#08c7e9;background:#041c27;font-size:10px;font-weight:800;letter-spacing:.1em}.download-notice{display:flex;align-items:center;gap:16px;text-align:left;margin:0 auto 48px;padding:20px;border:1px solid #123d5b;border-radius:16px;background:linear-gradient(100deg,#071a2a,#06111c);box-shadow:0 20px 55px #006dff18;max-width:700px}.download-notice>strong{width:42px;height:42px;display:grid;place-items:center;border-radius:10px;background:#062d4b;color:var(--blue);font-size:21px}.download-notice div{flex:1}.download-notice b,.download-notice small{display:block}.download-notice b{font-size:13px}.download-notice small{margin-top:7px;color:#8ca8bf;font-size:10px;line-height:1.5}.download-notice .buy{white-space:nowrap;padding:11px 16px}.download-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:center}.download-cards article{padding:28px 18px;border:1px solid #142d45;border-radius:14px;background:linear-gradient(145deg,#080f18,#040910);min-height:180px}.download-cards article>strong{display:grid;place-items:center;width:42px;height:42px;margin:0 auto 18px;border-radius:9px;background:#062d4b;color:var(--blue);font-size:22px}.download-cards b{display:block;font-size:12px}.download-cards small{display:block;color:#91a9bf;font-size:10px;line-height:1.6;margin-top:8px}@media(max-width:850px){.download-notice{align-items:flex-start;flex-wrap:wrap}.download-notice .buy{margin-left:58px}.download-cards{grid-template-columns:1fr}.download-section{padding-top:85px;padding-bottom:85px}}';document.head.appendChild(css);
