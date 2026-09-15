@@ -3,11 +3,29 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TITAN TURBO — Otimização de verdade para o seu PC</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
   <link rel="stylesheet" href="logo.css">
-  <link rel="stylesheet" href="home-dl.css">
+  <style>
+    #home-dl{width:min(820px,calc(100% - 32px));margin:50px auto 70px;padding:0;text-align:center}
+    #home-dl h2{font-size:clamp(36px,5vw,54px);line-height:1.05;margin:10px 0 14px}
+    #home-dl .lead{max-width:480px;margin:0 auto 22px;color:#a8bdd3;line-height:1.7}
+    #home-dl .rowbtns{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+    #home-dl .ok{display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;border:1px solid #0d4c63;background:#03141b;color:#55d9ff;font-size:10px;font-weight:800}
+    #home-dl .box{display:flex;align-items:center;gap:16px;text-align:left;width:min(640px,100%);margin:0 auto 28px;padding:18px 20px;border-radius:18px;border:1px solid #123b62;background:#071a2b}
+    #home-dl .sq{width:42px;height:42px;flex:0 0 42px;border-radius:12px;background:#062d4b;color:#08a9ff;display:grid;place-items:center;font-weight:900}
+    #home-dl .box b{display:block}
+    #home-dl .box span{display:block;color:#8fa8bf;font-size:12px;margin-top:4px}
+    #home-dl .box .buy{margin-left:auto;white-space:nowrap}
+    #home-dl .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+    #home-dl .g3 article{border:1px solid #16324c;border-radius:18px;background:#07111d;padding:28px 16px;min-height:200px}
+    #home-dl .g3 i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 14px;border-radius:14px;font-style:normal;background:#062d4b;color:#7dd3fc}
+    #home-dl .g3 article:nth-child(2) i{background:#08352f;color:#5eead4}
+    #home-dl .g3 article:nth-child(3) i{background:#1e1b4b;color:#c4b5fd}
+    #home-dl .g3 b{display:block;margin-bottom:8px}
+    #home-dl .g3 small{color:#8fa8bf;line-height:1.55}
+    @media(max-width:700px){#home-dl .box{flex-wrap:wrap}#home-dl .box .buy{width:100%;margin-left:0}#home-dl .g3{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
 <header class="topbar"><a class="brand" href="./"><span>TITAN</span><b>TURBO</b><i>◒</i></a>
@@ -21,10 +39,9 @@
   <h2>Baixe o <em>Titan Turbo</em></h2>
   <p class="lead">O Titan Turbo já está disponível. Baixe o instalador oficial e entre com sua KEY para começar.</p>
   <div class="rowbtns">
-    <a class="buy" data-setup href="https://github.com/juniorcava00-cmd/site/releases/download/v1.0/TitanTurboPRO-Setup.7z" target="_blank" rel="noopener">Baixar Titan Turbo</a>
+    <a class="buy" href="https://github.com/juniorcava00-cmd/site/releases/download/v1.0/TitanTurboPRO-Setup.7z" target="_blank" rel="noopener">Baixar Titan Turbo</a>
     <span class="ok">100% LIVRE DE MALWARE</span>
   </div>
-  <p class="lead"><a href="https://github.com/juniorcava00-cmd/site/releases/download/v1.0/TitanTurboPRO-Setup.7z" target="_blank" rel="noopener" style="color:#55d9ff">Se o botão não baixar, use este link</a></p>
   <div class="box">
     <div class="sq">+</div>
     <div><b>Ainda não tem uma key?</b><span>Escolha o plano ideal para liberar o catálogo completo.</span></div>
@@ -40,5 +57,4 @@
 </main>
 <footer><a class="brand" href="./"><span>TITAN</span><b>TURBO</b><i>◒</i></a><span>© 2026 Titan Turbo.</span><div><a href="/privacidade/">Política de Privacidade</a><a href="/termos/">Termos de Uso</a></div></footer>
 <script src="script.js"></script>
-<script src="dl.js"></script>
 </body></html>
