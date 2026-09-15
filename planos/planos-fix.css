@@ -1,0 +1,9 @@
+/* Centraliza o cabeçalho da seção de planos sem alterar os cards. */
+#planos.below{
+  text-align:center;
+}
+#planos.below .eyebrow,
+#planos.below h2{
+  margin-left:auto;
+  margin-right:auto;
+}
