@@ -8,14 +8,14 @@ window.TITAN_PAY = {
       name: "APP USO ÚNICO",
       price: 59.90,
       blurb: "Válido neste Windows. Se formatar, a KEY deixa de funcionar.",
-      mpLink: ""
+      mpLink: "https://mpago.la/2W5p62e"
     },
     life: {
       id: "life",
       name: "APP VITALÍCIO",
       price: 139.90,
       blurb: "1 computador. Pode formatar o mesmo PC. Não vale na máquina de outra pessoa.",
-      mpLink: ""
+      mpLink: "https://mpago.la/2AYPn7J"
     }
   }
 };
