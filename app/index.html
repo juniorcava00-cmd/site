@@ -1,21 +1,48 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sobre o App — Titan Turbo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../logo.css">
-  <link rel="icon" href="/favicon.svg?v=1" type="image/svg+xml">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sobre o App — Titan Turbo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=4"><link rel="stylesheet" href="../logo.css">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<style>
+:root{--cyan:#08a9ff;--blue:#087cff;--ink:#020812;--panel:#071525;--muted:#8fa8bf}
+.app-page{position:relative;overflow:hidden;background:radial-gradient(circle at 75% 18%,rgba(0,146,255,.12),transparent 32%),radial-gradient(circle at 20% 55%,rgba(0,89,255,.08),transparent 30%),#02070e}
+.app-page:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(25,130,210,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(25,130,210,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000,transparent 78%)}
+.app-hero{position:relative;z-index:1;max-width:1180px;margin:auto;padding:110px 24px 70px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:70px;align-items:center}
+.app-copy .eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.2em;margin-bottom:18px}
+.app-copy h1{font-size:clamp(42px,5vw,68px);line-height:.98;letter-spacing:-.055em;margin:0 0 24px;font-weight:900}
+.app-copy h1 em{font-style:normal;color:var(--cyan)}
+.app-copy .lead{color:#a8bdd3;font-size:16px;line-height:1.8;max-width:570px;margin:0 0 18px}
+.app-copy .lead strong{color:#eaf5ff}
+.app-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.app-actions .buy{display:inline-flex;align-items:center;gap:8px}
+.app-note{display:flex;gap:10px;align-items:center;color:#7894ad;font-size:11px;margin-top:18px}.app-note b{color:#3fc5ff}
+.showcase{position:relative;min-width:0;perspective:1000px}
+.glow{position:absolute;width:340px;height:340px;right:10%;top:15%;background:rgba(0,139,255,.18);filter:blur(80px);border-radius:50%}
+.screen{position:relative;border:1px solid #16476f;border-radius:18px;background:#020912;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 45px rgba(0,145,255,.1);overflow:hidden}
+.screen + .screen{width:74%;margin:-105px 0 0 auto;transform:rotate(-1.5deg);z-index:2}
+.screen.main{transform:rotate(1.5deg);z-index:3}
+.windowbar{height:36px;padding:0 13px;display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,#06172a,#07111d);border-bottom:1px solid #123452;color:#d9ecff;font-size:10px;font-weight:700}.windowbar i{width:10px;height:10px;border-radius:3px;background:#078cff;box-shadow:0 0 12px #078cff}.dots{margin-left:auto;display:flex;gap:5px}.dots span{width:7px;height:7px;border-radius:50%;border:1px solid #49657d}
+.mock{display:grid;grid-template-columns:108px 1fr;min-height:280px}.side{padding:16px 10px;background:linear-gradient(180deg,#04101d,#020913);border-right:1px solid #12314b}.mini-logo{font-size:17px;font-weight:900;font-style:italic;letter-spacing:-.08em;margin:0 0 22px;color:#fff}.mini-logo em{color:#079cff;font-style:normal}.navgroup{color:#198fd4;font-size:7px;font-weight:800;letter-spacing:.13em;margin:12px 6px 7px}.navitem{padding:7px 7px;border-radius:6px;color:#b6cbe0;font-size:8px}.navitem.active{background:linear-gradient(90deg,rgba(0,135,255,.3),transparent);color:#fff;border-left:2px solid #00aaff}.content{padding:18px}.crumb{color:#0b9cf2;font-size:9px;margin-bottom:17px}.mock-title{font-size:15px;font-weight:800;margin-bottom:16px}.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.stat{border:1px solid #173d5e;border-radius:9px;padding:11px;background:linear-gradient(145deg,#081a2d,#030a12)}.stat small{font-size:7px;color:#7fa1bd}.stat b{display:block;font-size:18px;margin:7px 0 3px;color:#16aaff}.stat:nth-child(2) b{color:#10d47a}.stat:nth-child(3) b{color:#a65cff}.stat:nth-child(4) b{color:#ffad18}.stat span{font-size:6px;color:#66839d}.info{height:42px;border:1px solid #17476d;border-radius:9px;margin-top:10px;display:flex;align-items:center;justify-content:space-around;color:#9bb6cc;font-size:7px}.drivercards{display:grid;grid-template-columns:1fr 1fr;gap:9px}.driver{border:1px solid #12659b;border-radius:10px;padding:13px;background:linear-gradient(145deg,#06182a,#030a11);min-height:130px}.driver b{display:block;color:#09a7ff;font-size:8px;margin-bottom:4px}.driver strong{font-size:12px;line-height:1.1}.driver p{font-size:7px;color:#7fa1bd;margin-top:13px}.check{display:inline-block;border:1px solid #17618d;color:#79b9dd;border-radius:999px;padding:4px 6px;font-size:6px;margin-top:8px}
+.features{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:25px 24px 100px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{padding:24px;border:1px solid #12304a;background:linear-gradient(145deg,rgba(7,22,37,.9),rgba(2,8,14,.9));border-radius:16px}.feature .ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#062b47;color:#14aeff;font-weight:900;margin-bottom:15px;box-shadow:0 0 20px rgba(0,157,255,.12)}.feature h3{font-size:15px;margin:0 0 7px}.feature p{font-size:12px;line-height:1.65;color:#819ab0;margin:0}
+.story{position:relative;z-index:1;max-width:1180px;margin:auto;padding:20px 24px 110px;text-align:center}.story .eyebrow{color:#079ff0;font-size:10px;letter-spacing:.18em;font-weight:800}.story h2{font-size:clamp(32px,4vw,50px);letter-spacing:-.05em;margin:12px 0}.story h2 em{color:#09a8ff;font-style:normal}.story p{max-width:760px;margin:0 auto;color:#8ea7bd;line-height:1.8;font-size:14px}
+@media(max-width:900px){.app-hero{grid-template-columns:1fr;gap:45px;padding-top:80px}.showcase{max-width:760px;margin:auto;width:100%}.features{grid-template-columns:1fr}.screen + .screen{margin-top:-65px;width:82%}}
+@media(max-width:600px){.app-hero{padding:65px 18px 45px}.app-copy h1{font-size:42px}.mock{grid-template-columns:72px 1fr}.side{padding:12px 6px}.statgrid{grid-template-columns:1fr 1fr}.screen + .screen{width:90%;margin-top:-45px}.features,.story{padding-left:18px;padding-right:18px}.drivercards{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a>
-<nav><a href="/">Início</a><a class="active" href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a href="/download/">Download</a><a href="/faq/">FAQ</a></nav>
-<div class="header-actions"><a class="buy buy-cart" href="/planos/"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.2 14h9.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 21.1 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.44C5.52 16.37 6.48 18 8 18h12v-2H8l1.1-2z"/></svg> Comprar Agora</a></div></header>
-<main>
-<section class="hero" style="min-height:auto;padding-top:80px">
-  <div class="hero-content">
-    <div class="pill">SOBRE O APP</div>
-    <h1>Otimização de verdade<br><em>para o seu PC.</em></h1>
-    <p>Painel, drivers, limpeza, backups e licença por KEY. Sem trial: só entra com chave válida.</p>
-    <p style="margin-top:28px"><a class="buy" href="/planos/">Ver planos</a></p>
+<header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a><nav><a href="/">Início</a><a class="active" href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a href="/download/">Download</a><a href="/faq/">FAQ</a></nav><div class="header-actions"><a class="buy buy-cart" href="/planos/"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.2 14h9.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 21.1 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.44C5.52 16.37 6.48 18 8 18h12v-2H8l1.1-2z"/></svg> Comprar Agora</a></div></header>
+<main class="app-page">
+<section class="app-hero">
+<div class="app-copy"><div class="eyebrow">SOBRE O TITAN TURBO</div><h1>Seu Windows,<br><em>ajustado para competir.</em></h1><p class="lead">O Titan Turbo nasceu de um problema simples: extrair o máximo do Windows exige conhecimento técnico, e uma configuração errada pode causar instabilidade. Para quem não domina esses menus, o receio de mexer é real.</p><p class="lead">O app transforma esse processo em um fluxo <strong>simples e controlado</strong>, com ajustes voltados a FPS, input lag e responsividade. Tudo para entregar o padrão de resposta que um jogador competitivo exige, sem depender de tentativa e erro em configurações avançadas.</p><div class="app-actions"><a class="buy" href="/planos/">Quero otimizar meu PC →</a><a class="buy" href="/download/">Conhecer o app</a></div><div class="app-note"><b>✓</b> Ajustes guiados &nbsp; • &nbsp; <b>✓</b> Fluxo controlado &nbsp; • &nbsp; <b>✓</b> Foco em performance</div></div>
+<div class="showcase"><div class="glow"></div>
+<div class="screen main"><div class="windowbar"><i></i> Titan Turbo PRO <span>Painel</span><div class="dots"><span></span><span></span><span></span></div></div><div class="mock"><aside class="side"><div class="mini-logo">TITAN <em>TURBO</em><br><small>PRO</small></div><div class="navgroup">GERAL</div><div class="navitem active">⌂ &nbsp; Painel</div><div class="navgroup">DESEMPENHO</div><div class="navitem">ϟ &nbsp; Otimizações</div><div class="navitem">◐ &nbsp; Limpeza</div><div class="navitem">▣ &nbsp; BIOS</div><div class="navgroup">SEGURANÇA</div><div class="navitem">↻ &nbsp; Backups</div><div class="navgroup">FERRAMENTAS</div><div class="navitem">▦ &nbsp; Apps</div><div class="navitem">☷ &nbsp; Drivers</div></aside><div class="content"><div class="crumb">Página: Painel</div><div class="mock-title">Painel do Sistema</div><div class="statgrid"><div class="stat"><small>CPU</small><b>9%</b><span>8 NÚCLEOS</span></div><div class="stat"><small>GPU</small><b>1%</b><span>4 GB</span></div><div class="stat"><small>RAM</small><b>55%</b><span>DDR4 • 32 GB</span></div><div class="stat"><small>DISCO</small><b>86%</b><span>NVMe • 465 GB</span></div></div><div class="info"><span>Computador<br><b>DESKTOP</b></span><span>Sistema operacional<br><b>Windows</b></span><span>Atualização<br><b>~1,2 s</b></span></div></div></div></div>
+<div class="screen"><div class="windowbar"><i></i> Titan Turbo PRO <span>Drivers</span><div class="dots"><span></span><span></span><span></span></div></div><div class="mock"><aside class="side"><div class="mini-logo">TITAN <em>TURBO</em></div><div class="navgroup">FERRAMENTAS</div><div class="navitem active">☷ &nbsp; Drivers</div></aside><div class="content"><div class="crumb">Página: Drivers</div><div class="mock-title">Drivers</div><div class="drivercards"><div class="driver"><b>GPU — NVIDIA</b><strong>NVIDIA GeForce RTX</strong><p>Versão instalada: 516.94</p><span class="check">Ainda não verificado</span></div><div class="driver"><b>CHIPSET — INTEL</b><strong>13th Gen Intel Core</strong><p>Identificação automática do hardware.</p><span class="check">Nenhum driver disponível</span></div></div></div></div></div>
+</div></section>
+<section class="features"><article class="feature"><div class="ico">ϟ</div><h3>Mais FPS</h3><p>Ajustes pensados para reduzir gargalos e aproveitar melhor o hardware.</p></article><article class="feature"><div class="ico">◈</div><h3>Menor input lag</h3><p>Mais responsividade para que seus comandos cheguem mais rápido à tela.</p></article><article class="feature"><div class="ico">✓</div><h3>Fluxo controlado</h3><p>Você entende o que está sendo aplicado, sem navegar por dezenas de menus.</p></article></section>
+<section class="story"><div class="eyebrow">A IDEIA POR TRÁS DO APP</div><h2>Performance sem <em>tentativa e erro.</em></h2><p>O Titan Turbo organiza tarefas que normalmente exigiriam pesquisa, testes e conhecimento avançado em uma experiência visual única. O objetivo é simples: deixar seu Windows pronto para responder como um PC voltado à competição.</p></section>
+</main>
+<footer><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a><span>© 2026 Titan Turbo.</span><div><a href="/privacidade/">Política de Privacidade</a><a href="/termos/">Termos de Uso</a></div></footer>
+</body></html>
