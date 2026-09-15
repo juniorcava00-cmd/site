@@ -1,21 +1,17 @@
-/* Usa as capturas reais do Titan Turbo no showcase da página Sobre o App. */
+/* Capturas reais do Titan Turbo PRO. Mantém a imagem em alta qualidade e sem mockup por cima. */
 .app-page .showcase .screen{
   aspect-ratio:1664 / 936;
-  background-image:url('https://raw.githubusercontent.com/juniorcava00-cmd/site/d4b283c56dc8475854e5a55efcddf79ef53357fb/app/titan-app-panel.jpg') !important;
-  background-size:cover;
+  background-image:url('/app/titan-app-panel.jpg') !important;
+  background-size:100% 100%;
   background-position:center;
+  background-repeat:no-repeat;
+  overflow:hidden;
 }
-
-.app-page .showcase .screen.main > *{
-  display:none;
-}
-
+.app-page .showcase .screen.main > *{display:none!important}
 .app-page .showcase .screen + .screen{
-  background-image:url('https://raw.githubusercontent.com/juniorcava00-cmd/site/d4b283c56dc8475854e5a55efcddf79ef53357fb/app/titan-app-drivers.jpg') !important;
-  background-size:cover;
+  background-image:url('/app/titan-app-drivers.jpg') !important;
+  background-size:100% 100%;
   background-position:center;
+  background-repeat:no-repeat;
 }
-
-.app-page .showcase .screen + .screen > *{
-  display:none;
-}
+.app-page .showcase .screen + .screen > *{display:none!important}
