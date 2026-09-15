@@ -1,7 +1,7 @@
-/* Capturas reais do Titan Turbo PRO. Mantém a imagem em alta qualidade e sem mockup por cima. */
+/* Capturas PNG originais do Titan Turbo PRO — sem mockup, sem filtro e sem compressão adicional. */
 .app-page .showcase .screen{
-  aspect-ratio:1664 / 936;
-  background-image:url('/app/titan-app-panel.jpg') !important;
+  aspect-ratio:1672 / 941;
+  background-image:url('/app/titan-app-panel.png') !important;
   background-size:100% 100%;
   background-position:center;
   background-repeat:no-repeat;
@@ -9,7 +9,7 @@
 }
 .app-page .showcase .screen.main > *{display:none!important}
 .app-page .showcase .screen + .screen{
-  background-image:url('/app/titan-app-drivers.jpg') !important;
+  background-image:url('/app/titan-app-drivers.png') !important;
   background-size:100% 100%;
   background-position:center;
   background-repeat:no-repeat;
