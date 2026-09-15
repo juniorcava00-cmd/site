@@ -1,0 +1,21 @@
+/* Usa as capturas reais do Titan Turbo no showcase da página Sobre o App. */
+.app-page .showcase .screen{
+  aspect-ratio:1664 / 936;
+  background-image:url('/app/titan-app-panel.jpg');
+  background-size:cover;
+  background-position:center;
+}
+
+.app-page .showcase .screen.main > *{
+  display:none;
+}
+
+.app-page .showcase .screen + .screen{
+  background-image:url('/app/titan-app-drivers.jpg');
+  background-size:cover;
+  background-position:center;
+}
+
+.app-page .showcase .screen + .screen > *{
+  display:none;
+}
