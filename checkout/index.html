@@ -13,7 +13,6 @@
     .muted{color:#8fa8bf;font-size:13px;line-height:1.6}
     label{display:block;font-size:12px;font-weight:700;margin:16px 0 8px}
     input{width:100%;padding:14px 14px;border-radius:12px;border:1px solid #1a527e;background:#030b14;color:#fff;font-size:14px}
-    .row2{display:flex;gap:10px;align-items:center}
     .machine{background:#0D0D0F;border:1px solid #2a2a30;border-radius:16px;padding:18px;text-align:center;margin-top:16px}
     .machine .logo{font-weight:900;letter-spacing:.08em;color:#60A5FA;margin-bottom:10px}
     .machine .code{font-family:Consolas,monospace;color:#60A5FA;font-size:12px;word-break:break-all;margin:8px 0 12px}
@@ -28,14 +27,13 @@
 <body>
 <header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a>
 <nav><a href="/">Início</a><a href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a href="/download/">Download</a><a href="/faq/">FAQ</a></nav>
-<div class="header-actions"><a class="buy buy-cart" href="/planos/"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.2 14h9.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 21.1 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.44C5.52 16.37 6.48 18 8 18h12v-2H8l1.1-2z"/></svg> Comprar Agora</a></div></header>
+<div class="header-actions"><a class="buy buy-cart" href="/planos/">Comprar Agora</a></div></header>
 <main class="co">
   <section class="card">
-    <div class="step" id="stepLabel">ETAPA 1 DE 2</div>
+    <div class="step">ETAPA 1 DE 2</div>
     <h2>Dados de entrega</h2>
     <p class="muted">Para onde enviamos sua licença? A KEY vai no e-mail e no WhatsApp depois que você mandar o <b>código da máquina</b> do aplicativo.</p>
     <p class="muted">Suporte: <a class="wa" href="https://wa.me/5519992597816" target="_blank">(19) 99259-7816</a></p>
-
     <div class="machine">
       <div class="logo">TITAN TURBO PRO</div>
       <div class="muted" style="font-size:11px">Ativação de Licença</div>
@@ -45,17 +43,13 @@
       <span class="btn">Copiar código</span>
       <p class="muted" style="margin-top:14px;font-size:11px">É <b>esta tela</b> do app. Copie o código e envie no WhatsApp após o pagamento.</p>
     </div>
-
     <form id="checkoutForm">
       <label for="email">E-mail para receber a licença</label>
       <input id="email" type="email" required placeholder="voce@email.com" autocomplete="email">
       <p class="muted">Use um e-mail que você acessa. A chave é enviada depois da aprovação e do envio do código da máquina.</p>
-      <label for="coupon">Cupom de desconto</label>
-      <div class="row2">
-        <input id="coupon" placeholder="Ex: TITAN10">
-        <button class="buy" type="button" id="applyCoupon">Aplicar</button>
-      </div>
-      <p class="muted" id="couponMsg"></p>
+      <label>Cupom de desconto</label>
+      <input value="Em breve" disabled>
+      <p class="muted">Campo ilustrativo. O valor cobrado é o do Mercado Pago (R$ 59,90 ou R$ 139,90).</p>
       <button class="buy wide" type="submit" style="margin-top:22px">Continuar para pagamento</button>
       <p class="pay-note">Pix, cartão e outros meios na próxima etapa (Mercado Pago). Ao continuar, você concorda com os <a href="/termos/">Termos de Uso</a> e a <a href="/privacidade/">Política de Privacidade</a>.</p>
     </form>
@@ -64,7 +58,6 @@
     <h2>Seu pedido</h2>
     <ul class="sum" style="list-style:none;padding:0">
       <li><span id="planName">Plano</span><b id="planPrice">—</b></li>
-      <li><span>Desconto</span><b id="planDisc">R$ 0,00</b></li>
       <li style="border-top:1px solid #12304d;padding-top:12px"><span>Total</span><b id="planTotal">—</b></li>
     </ul>
     <p class="muted" id="planBlurb"></p>
