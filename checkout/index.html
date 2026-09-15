@@ -12,7 +12,8 @@
     .card h2{margin:0 0 8px;font-size:22px}
     .muted{color:#8fa8bf;font-size:13px;line-height:1.6}
     label{display:block;font-size:12px;font-weight:700;margin:16px 0 8px}
-    input{width:100%;padding:14px 14px;border-radius:12px;border:1px solid #1a527e;background:#030b14;color:#fff;font-size:14px}
+    input{width:100%;padding:14px;border-radius:12px;border:1px solid #1a527e;background:#030b14;color:#fff;font-size:14px}
+    .row2{display:flex;gap:10px}
     .machine{background:#0D0D0F;border:1px solid #2a2a30;border-radius:16px;padding:18px;text-align:center;margin-top:16px}
     .machine .logo{font-weight:900;letter-spacing:.08em;color:#60A5FA;margin-bottom:10px}
     .machine .code{font-family:Consolas,monospace;color:#60A5FA;font-size:12px;word-break:break-all;margin:8px 0 12px}
@@ -27,7 +28,7 @@
 <body>
 <header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a>
 <nav><a href="/">Início</a><a href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a href="/download/">Download</a><a href="/faq/">FAQ</a></nav>
-<div class="header-actions"><a class="buy buy-cart" href="/planos/">Comprar Agora</a></div></header>
+<div class="header-actions"><a class="buy" href="/planos/">Comprar Agora</a></div></header>
 <main class="co">
   <section class="card">
     <div class="step">ETAPA 1 DE 2</div>
@@ -47,9 +48,12 @@
       <label for="email">E-mail para receber a licença</label>
       <input id="email" type="email" required placeholder="voce@email.com" autocomplete="email">
       <p class="muted">Use um e-mail que você acessa. A chave é enviada depois da aprovação e do envio do código da máquina.</p>
-      <label>Cupom de desconto</label>
-      <input value="Em breve" disabled>
-      <p class="muted">Campo ilustrativo. O valor cobrado é o do Mercado Pago (R$ 59,90 ou R$ 139,90).</p>
+      <label for="coupon">Cupom de desconto</label>
+      <div class="row2">
+        <input id="coupon" placeholder="Se tiver um cupom, cole aqui">
+        <button class="buy" type="button" disabled title="Cupons serão ativados com link promocional no Mercado Pago">Aplicar</button>
+      </div>
+      <p class="muted">O valor cobrado é o do Mercado Pago. Cupom não altera o checkout por enquanto.</p>
       <button class="buy wide" type="submit" style="margin-top:22px">Continuar para pagamento</button>
       <p class="pay-note">Pix, cartão e outros meios na próxima etapa (Mercado Pago). Ao continuar, você concorda com os <a href="/termos/">Termos de Uso</a> e a <a href="/privacidade/">Política de Privacidade</a>.</p>
     </form>
