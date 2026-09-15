@@ -10,31 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileButton = document.querySelector('#downloadFileButton');
   fileButton?.addEventListener('click', () => { fileButton.textContent = 'Instalador em breve'; fileButton.disabled = true; fileButton.style.opacity = '.65'; });
 
-  const downloadSection = document.querySelector('.download-section');
-  if (downloadSection) {
-    downloadSection.innerHTML = `
-      <div class="eyebrow">DOWNLOAD OFICIAL</div>
-      <h2>Baixe o <em>Titan Turbo</em></h2>
-      <p>O Titan Turbo já está disponível. Baixe o instalador oficial e entre com sua KEY.</p>
-      <div class="download-actions">
-        <button class="buy download-trigger" type="button">⇩ &nbsp; Baixar Titan Turbo</button>
-        <span class="download-badge">✓ &nbsp; 100% LIVRE DE MALWARE</span>
-      </div>
-      <div class="download-notice">
-        <strong>▣</strong>
-        <div><b>Ainda não tem uma key?</b><small>Escolha o plano e finalize a compra.</small></div>
-        <a class="buy" href="/planos/">Confira os planos</a>
-      </div>
-      <div class="download-cards">
-        <article><strong>▣</strong><b>Windows 10 ou 11</b><small>Instalador único, 64-bit.</small></article>
-        <article><strong>⇈</strong><b>Reversível por padrão</b><small>Ponto de restauração antes de aplicar.</small></article>
-        <article><strong>▤</strong><b>Qualquer CPU/GPU</b><small>Nvidia, AMD ou Intel.</small></article>
-      </div>`;
-    downloadSection.querySelectorAll('.download-trigger').forEach((button) => button.addEventListener('click', openDownload));
-  }
-
   const plans = document.querySelector('#planos');
-  if (plans) {
+  if (plans && !plans.querySelector('.plans-layout')) {
     plans.innerHTML = `
       <div class="eyebrow">ESCOLHA SEU PLANO</div>
       <h2>Escolha o plano ideal<br><em>para você.</em></h2>
