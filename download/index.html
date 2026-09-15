@@ -1,55 +1,63 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Download — Titan Turbo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../logo.css">
-  <link rel="stylesheet" href="../layout-fix.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download — Titan Turbo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../logo.css">
+<style>
+  .dlwrap{width:min(820px,calc(100% - 32px));margin:64px auto 80px;text-align:center}
+  .dlwrap h1{font-size:clamp(36px,5vw,54px);line-height:1.05;margin:10px 0 14px;letter-spacing:-.05em}
+  .dlwrap .lead{max-width:480px;margin:0 auto 26px;color:#a8bdd3;line-height:1.7}
+  .dl-row{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+  .pill-ok{display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;border:1px solid #0d4c63;background:#03141b;color:#55d9ff;font-size:10px;font-weight:800;letter-spacing:.06em}
+  .keybox{display:flex;align-items:center;gap:16px;text-align:left;width:min(640px,100%);margin:0 auto 28px;padding:18px 20px;border-radius:18px;border:1px solid #123b62;background:linear-gradient(135deg,#071a2b,#030b14)}
+  .keybox .sq{width:42px;height:42px;flex:0 0 42px;border-radius:12px;background:#062d4b;color:#08a9ff;display:grid;place-items:center;font-weight:900}
+  .keybox b{display:block;font-size:14px}
+  .keybox span{display:block;color:#8fa8bf;font-size:12px;margin-top:4px;line-height:1.5}
+  .keybox .buy{margin-left:auto;white-space:nowrap}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .grid3 article{border:1px solid #16324c;border-radius:18px;background:#07111d;padding:28px 16px;min-height:200px}
+  .grid3 i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 14px;border-radius:14px;font-style:normal;font-weight:900}
+  .grid3 article:nth-child(1) i{background:#062d4b;color:#7dd3fc}
+  .grid3 article:nth-child(2) i{background:#08352f;color:#5eead4}
+  .grid3 article:nth-child(3) i{background:#1e1b4b;color:#c4b5fd}
+  .grid3 b{display:block;margin-bottom:8px}
+  .grid3 small{color:#8fa8bf;line-height:1.55}
+  @media(max-width:700px){
+    .keybox{flex-wrap:wrap}
+    .keybox .buy{width:100%;margin-left:0}
+    .grid3{grid-template-columns:1fr}
+    .grid3 article{min-height:0}
+  }
+</style>
 </head>
 <body>
 <header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a>
 <nav><a href="/">Início</a><a href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a class="active" href="/download/">Download</a><a href="/faq/">FAQ</a></nav>
-<div class="header-actions"><a class="buy buy-cart" href="/planos/"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.2 14h9.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 21.1 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.44C5.52 16.37 6.48 18 8 18h12v-2H8l1.1-2z"/></svg> Comprar Agora</a></div></header>
-<main>
-<section class="dl">
+<div class="header-actions"><a class="buy" href="/planos/">Comprar Agora</a></div></header>
+<main class="dlwrap">
   <div class="eyebrow">DOWNLOAD OFICIAL</div>
-  <h2>Baixe o <em>Titan Turbo</em></h2>
-  <p>O Titan Turbo já está disponível. Baixe o instalador oficial e entre com sua KEY para começar.</p>
-  <div class="dl-actions">
+  <h1>Baixe o <em>Titan Turbo</em></h1>
+  <p class="lead">O Titan Turbo já está disponível. Baixe o instalador oficial e entre com sua KEY para começar.</p>
+  <div class="dl-row">
     <button class="buy download-trigger" type="button">Baixar Titan Turbo</button>
-    <span class="dl-badge">100% LIVRE DE MALWARE</span>
+    <span class="pill-ok">100% LIVRE DE MALWARE</span>
   </div>
-  <div class="dl-notice">
-    <div class="dl-ico">▣</div>
-    <div>
-      <b>Ainda não tem uma key?</b>
-      <small>Escolha o plano ideal para liberar o catálogo completo.</small>
-    </div>
+  <div class="keybox">
+    <div class="sq">+</div>
+    <div><b>Ainda não tem uma key?</b><span>Escolha o plano ideal para liberar o catálogo completo.</span></div>
     <a class="buy" href="/planos/">Confira os planos</a>
   </div>
-  <div class="dl-cards">
-    <article>
-      <div class="ico">⍠</div>
-      <b>Windows 10 ou 11</b>
-      <small>Instalador único, 64-bit, sem exigir versão específica.</small>
-    </article>
-    <article>
-      <div class="ico">⇈</div>
-      <b>Reversível por padrão</b>
-      <small>Ponto de restauração criado automaticamente antes de aplicar.</small>
-    </article>
-    <article>
-      <div class="ico">☰</div>
-      <b>Qualquer CPU/GPU</b>
-      <small>Nvidia, AMD ou Intel. 100% compatível, sem requisitos pesados.</small>
-    </article>
+  <div class="grid3">
+    <article><i>W</i><b>Windows 10 ou 11</b><small>Instalador único, 64-bit, sem exigir versão específica.</small></article>
+    <article><i>↑</i><b>Reversível por padrão</b><small>Ponto de restauração criado automaticamente antes de aplicar.</small></article>
+    <article><i>#</i><b>Qualquer CPU/GPU</b><small>Nvidia, AMD ou Intel. 100% compatível, sem requisitos pesados.</small></article>
   </div>
-</section>
-<div class="download-modal" id="downloadModal" aria-hidden="true"><div class="download-backdrop" data-close-download></div><div class="download-dialog" role="dialog"><button class="modal-close" type="button" data-close-download>×</button><div class="modal-icon">⇩</div><div class="eyebrow">DOWNLOAD SEGURO</div><h2>Baixe o Titan Turbo.</h2><p>Instalador oficial para Windows 10 e 11.</p><div class="download-file"><div><b>TitanTurbo-Setup.exe</b><small>Windows · Versão 1.0</small></div><button class="buy" type="button" id="downloadFileButton">Baixar arquivo</button></div></div></div>
 </main>
-<footer><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a><span>© 2026 Titan Turbo.</span><div><a href="/privacidade/">Política de Privacidade</a><a href="/termos/">Termos de Uso</a></div></footer>
+<div class="download-modal" id="downloadModal" aria-hidden="true"><div class="download-backdrop" data-close-download></div><div class="download-dialog"><button class="modal-close" type="button" data-close-download>×</button><div class="eyebrow">DOWNLOAD SEGURO</div><h2>Baixe o Titan Turbo.</h2><p>Instalador oficial para Windows 10 e 11.</p><div class="download-file"><div><b>TitanTurbo-Setup.exe</b><small>Windows · Versão 1.0</small></div><button class="buy" type="button" id="downloadFileButton">Baixar arquivo</button></div></div></div>
+<footer><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a><span>© 2026 Titan Turbo.</span><div><a href="/privacidade/">Privacidade</a><a href="/termos/">Termos</a></div></footer>
 <script src="../script.js"></script>
-</body></html>
+</body>
+</html>

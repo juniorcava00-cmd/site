@@ -16,5 +16,9 @@ document.getElementById('checkoutForm').addEventListener('submit', (e) => {
   sessionStorage.setItem('titanOrder', JSON.stringify({
     plan: planId, name: plan.name, email, total: plan.price
   }));
+  if (plan.mpLink) {
+    window.location.href = plan.mpLink;
+    return;
+  }
   location.href = './pagar.html';
 });
