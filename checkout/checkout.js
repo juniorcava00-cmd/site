@@ -6,7 +6,6 @@ const brl = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL
 
 document.getElementById('planName').textContent = plan.name;
 document.getElementById('planPrice').textContent = brl(plan.price);
-document.getElementById('planDisc').textContent = 'R$ 0,00';
 document.getElementById('planTotal').textContent = brl(plan.price);
 document.getElementById('planBlurb').textContent = plan.blurb;
 
