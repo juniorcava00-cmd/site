@@ -1,0 +1,10 @@
+O arquivo TitanTurboPRO-Setup.7z tem ~42 MB e nao sobe por esta integracao.
+
+No GitHub:
+1. Abra https://github.com/juniorcava00-cmd/site
+2. Add file → Upload files
+3. Envie TitanTurboPRO-Setup.7z na RAIZ do repo (mesmo nivel do index.html)
+4. Commit
+
+Os botoes Baixar Titan Turbo ja apontam para:
+https://titanturbo.com.br/TitanTurboPRO-Setup.7z
