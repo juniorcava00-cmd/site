@@ -8,29 +8,23 @@
 <link rel="stylesheet" href="../logo.css">
 <style>
   .dlwrap{width:min(820px,calc(100% - 32px));margin:64px auto 80px;text-align:center}
-  .dlwrap h1{font-size:clamp(36px,5vw,54px);line-height:1.05;margin:10px 0 14px;letter-spacing:-.05em}
+  .dlwrap h1{font-size:clamp(36px,5vw,54px);line-height:1.05;margin:10px 0 14px}
   .dlwrap .lead{max-width:480px;margin:0 auto 26px;color:#a8bdd3;line-height:1.7}
   .dl-row{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
-  .pill-ok{display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;border:1px solid #0d4c63;background:#03141b;color:#55d9ff;font-size:10px;font-weight:800;letter-spacing:.06em}
-  .keybox{display:flex;align-items:center;gap:16px;text-align:left;width:min(640px,100%);margin:0 auto 28px;padding:18px 20px;border-radius:18px;border:1px solid #123b62;background:linear-gradient(135deg,#071a2b,#030b14)}
+  .pill-ok{display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;border:1px solid #0d4c63;background:#03141b;color:#55d9ff;font-size:10px;font-weight:800}
+  .keybox{display:flex;align-items:center;gap:16px;text-align:left;width:min(640px,100%);margin:0 auto 28px;padding:18px 20px;border-radius:18px;border:1px solid #123b62;background:#071a2b}
   .keybox .sq{width:42px;height:42px;flex:0 0 42px;border-radius:12px;background:#062d4b;color:#08a9ff;display:grid;place-items:center;font-weight:900}
-  .keybox b{display:block;font-size:14px}
-  .keybox span{display:block;color:#8fa8bf;font-size:12px;margin-top:4px;line-height:1.5}
+  .keybox b{display:block}
+  .keybox span{display:block;color:#8fa8bf;font-size:12px;margin-top:4px}
   .keybox .buy{margin-left:auto;white-space:nowrap}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .grid3 article{border:1px solid #16324c;border-radius:18px;background:#07111d;padding:28px 16px;min-height:200px}
-  .grid3 i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 14px;border-radius:14px;font-style:normal;font-weight:900}
-  .grid3 article:nth-child(1) i{background:#062d4b;color:#7dd3fc}
+  .grid3 i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 14px;border-radius:14px;font-style:normal;background:#062d4b;color:#7dd3fc}
   .grid3 article:nth-child(2) i{background:#08352f;color:#5eead4}
   .grid3 article:nth-child(3) i{background:#1e1b4b;color:#c4b5fd}
   .grid3 b{display:block;margin-bottom:8px}
   .grid3 small{color:#8fa8bf;line-height:1.55}
-  @media(max-width:700px){
-    .keybox{flex-wrap:wrap}
-    .keybox .buy{width:100%;margin-left:0}
-    .grid3{grid-template-columns:1fr}
-    .grid3 article{min-height:0}
-  }
+  @media(max-width:700px){.keybox{flex-wrap:wrap}.keybox .buy{width:100%;margin-left:0}.grid3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -42,7 +36,7 @@
   <h1>Baixe o <em>Titan Turbo</em></h1>
   <p class="lead">O Titan Turbo já está disponível. Baixe o instalador oficial e entre com sua KEY para começar.</p>
   <div class="dl-row">
-    <button class="buy download-trigger" type="button">Baixar Titan Turbo</button>
+    <a class="buy" href="/TitanTurboPRO-Setup.7z" download>Baixar Titan Turbo</a>
     <span class="pill-ok">100% LIVRE DE MALWARE</span>
   </div>
   <div class="keybox">
@@ -56,8 +50,5 @@
     <article><i>#</i><b>Qualquer CPU/GPU</b><small>Nvidia, AMD ou Intel. 100% compatível, sem requisitos pesados.</small></article>
   </div>
 </main>
-<div class="download-modal" id="downloadModal" aria-hidden="true"><div class="download-backdrop" data-close-download></div><div class="download-dialog"><button class="modal-close" type="button" data-close-download>×</button><div class="eyebrow">DOWNLOAD SEGURO</div><h2>Baixe o Titan Turbo.</h2><p>Instalador oficial para Windows 10 e 11.</p><div class="download-file"><div><b>TitanTurbo-Setup.exe</b><small>Windows · Versão 1.0</small></div><button class="buy" type="button" id="downloadFileButton">Baixar arquivo</button></div></div></div>
 <footer><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a><span>© 2026 Titan Turbo.</span><div><a href="/privacidade/">Privacidade</a><a href="/termos/">Termos</a></div></footer>
-<script src="../script.js"></script>
-</body>
-</html>
+</body></html>
