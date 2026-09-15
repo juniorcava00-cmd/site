@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a></header>
+<header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a><nav><a href="/">Início</a><a href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a href="/download/">Download</a><a href="/faq/">FAQ</a></nav><div class="header-actions"><a class="buy buy-cart" href="/planos/" aria-label="Comprar Agora"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.2 14h9.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 21.1 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.44C5.52 16.37 6.48 18 8 18h12v-2H8l1.1-2z"/></svg> Comprar Agora</a></div></header>
 <main class="box">
   <div class="eyebrow">ETAPA 2 DE 2</div>
   <h1>Pagamento</h1>
@@ -27,22 +27,12 @@ const cfg = window.TITAN_PAY;
 const order = JSON.parse(sessionStorage.getItem('titanOrder') || 'null');
 if (!order) location.href = '/planos/';
 else {
-  document.getElementById('resumo').textContent = order.name + ' · ' + order.email + ' · ' +
-    order.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  document.getElementById('resumo').textContent = order.name + ' · ' + order.email + ' · ' + order.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   const link = cfg.plans[order.plan].mpLink;
   const mp = document.getElementById('mpBtn');
   if (link) { mp.href = link; mp.target = '_blank'; }
-  else {
-    mp.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('Falta configurar o link do Mercado Pago em config.js (mpLink do plano). Enquanto isso, feche o pedido no WhatsApp.');
-    });
-  }
-  const text = encodeURIComponent(
-    'Pedido Titan Turbo\nPlano: ' + order.name + '\nE-mail: ' + order.email +
-    '\nTotal: R$ ' + order.total.toFixed(2).replace('.', ',') +
-    '\n(após pagar envio o código da máquina do app)'
-  );
+  else { mp.addEventListener('click', (e) => { e.preventDefault(); alert('Falta configurar o link do Mercado Pago em config.js (mpLink do plano). Enquanto isso, feche o pedido no WhatsApp.'); }); }
+  const text = encodeURIComponent('Pedido Titan Turbo\nPlano: ' + order.name + '\nE-mail: ' + order.email + '\nTotal: R$ ' + order.total.toFixed(2).replace('.', ',') + '\n(após pagar envio o código da máquina do app)');
   document.getElementById('waBtn').href = 'https://wa.me/' + cfg.whatsapp + '?text=' + text;
 }
 </script>
