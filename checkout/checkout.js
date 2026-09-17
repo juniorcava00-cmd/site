@@ -26,13 +26,6 @@ document.getElementById('checkoutForm').addEventListener('submit', async (e) => 
       if (submitButton.tagName === 'BUTTON') submitButton.textContent = 'Gerando pagamento...';
     }
 
-    sessionStorage.setItem('titanOrder', JSON.stringify({
-      plan: planId,
-      name: plan.name,
-      email,
-      total: plan.price
-    }));
-
     const response = await fetch(`${API_URL}/api/payment/create`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -45,7 +38,20 @@ document.getElementById('checkoutForm').addEventListener('submit', async (e) => 
     }
 
     const checkoutUrl = result?.init_point || result?.sandbox_init_point;
+    const checkoutToken = result?.checkout_token || result?.checkoutToken;
     if (!checkoutUrl) throw new Error('O Mercado Pago não retornou o endereço de pagamento.');
+    if (!checkoutToken) throw new Error('O servidor não retornou o identificador seguro da compra.');
+
+    const order = {
+      plan: planId,
+      name: plan.name,
+      email,
+      total: plan.price,
+      checkoutToken,
+      createdAt: new Date().toISOString()
+    };
+    sessionStorage.setItem('titanOrder', JSON.stringify(order));
+    localStorage.setItem('titanLastOrder', JSON.stringify(order));
 
     window.location.href = checkoutUrl;
   } catch (error) {
