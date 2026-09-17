@@ -3,22 +3,57 @@ const params = new URLSearchParams(location.search);
 const planId = params.get('plan') === 'life' ? 'life' : 'once';
 const plan = cfg.plans[planId];
 const brl = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const API_URL = 'https://titanturbopro-api.onrender.com';
 
 document.getElementById('planName').textContent = plan.name;
 document.getElementById('planPrice').textContent = brl(plan.price);
 document.getElementById('planTotal').textContent = brl(plan.price);
 document.getElementById('planBlurb').textContent = plan.blurb;
 
-document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const email = document.getElementById('email').value.trim();
+
+  const emailInput = document.getElementById('email');
+  const email = emailInput.value.trim();
   if (!email) return;
-  sessionStorage.setItem('titanOrder', JSON.stringify({
-    plan: planId, name: plan.name, email, total: plan.price
-  }));
-  if (plan.mpLink) {
-    window.location.href = plan.mpLink;
-    return;
+
+  const submitButton = e.currentTarget.querySelector('button[type="submit"], input[type="submit"]');
+  const originalText = submitButton?.textContent;
+
+  try {
+    if (submitButton) {
+      submitButton.disabled = true;
+      if (submitButton.tagName === 'BUTTON') submitButton.textContent = 'Gerando pagamento...';
+    }
+
+    sessionStorage.setItem('titanOrder', JSON.stringify({
+      plan: planId,
+      name: plan.name,
+      email,
+      total: plan.price
+    }));
+
+    const response = await fetch(`${API_URL}/api/payment/create`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, plan: planId })
+    });
+
+    const result = await response.json().catch(() => null);
+    if (!response.ok) {
+      throw new Error(result?.message || result?.detail || 'Não foi possível iniciar o pagamento.');
+    }
+
+    const checkoutUrl = result?.init_point || result?.sandbox_init_point;
+    if (!checkoutUrl) throw new Error('O Mercado Pago não retornou o endereço de pagamento.');
+
+    window.location.href = checkoutUrl;
+  } catch (error) {
+    console.error('TitanTurbo checkout:', error);
+    alert('Não foi possível iniciar o pagamento agora. Tente novamente em alguns instantes.');
+    if (submitButton) {
+      submitButton.disabled = false;
+      if (submitButton.tagName === 'BUTTON' && originalText) submitButton.textContent = originalText;
+    }
   }
-  location.href = './pagar.html';
 });
