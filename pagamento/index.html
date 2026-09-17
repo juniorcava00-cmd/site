@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pagamento — Titan Turbo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../logo.css">
+  <style>
+    .wrap{max-width:760px;margin:70px auto;padding:0 20px}.card{border:1px solid #123b62;border-radius:18px;background:linear-gradient(145deg,#071525,#020812);padding:32px;text-align:center}.muted{color:#8fa8bf;line-height:1.6}.key{font-family:Consolas,monospace;font-size:18px;color:#60A5FA;background:#030b14;border:1px solid #1a527e;border-radius:12px;padding:16px;word-break:break-all;margin:20px 0}.hidden{display:none}.status{font-size:12px;letter-spacing:.12em;color:#4caeff;font-weight:800}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+  </style>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a><nav><a href="/">Início</a><a href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a href="/download/">Download</a><a href="/faq/">FAQ</a></nav></header>
+<main class="wrap"><section class="card">
+  <div class="status" id="statusLabel">VERIFICANDO PAGAMENTO</div>
+  <h1 id="title">Aguarde um instante...</h1>
+  <p class="muted" id="message">Estamos confirmando seu pagamento com segurança.</p>
+  <div id="licenseBox" class="hidden">
+    <p class="muted">Sua KEY TitanTurboPRO:</p><div class="key" id="licenseKey"></div>
+    <button class="buy" id="copyKey" type="button">Copiar KEY</button>
+    <p class="muted">Guarde esta chave. Abra o TitanTurboPRO e use-a na tela de ativação.</p>
+  </div>
+  <div class="actions"><a class="buy" href="/download/">Baixar aplicativo</a><a class="buy" href="/">Voltar ao início</a></div>
+</section></main>
+<script>
+const API_URL='https://titanturbopro-api.onrender.com';
+const qs=new URLSearchParams(location.search);const token=qs.get('token');const result=qs.get('result');
+const label=document.getElementById('statusLabel'),title=document.getElementById('title'),message=document.getElementById('message'),box=document.getElementById('licenseBox'),keyEl=document.getElementById('licenseKey');
+let attempts=0;
+function showFailure(){label.textContent='PAGAMENTO NÃO CONCLUÍDO';title.textContent='Pagamento não aprovado';message.textContent='Você pode voltar aos planos e tentar novamente. Nenhuma licença foi liberada.';}
+async function check(){
+ if(!token){showFailure();return;}
+ try{
+  const r=await fetch(`${API_URL}/api/payment/status?token=${encodeURIComponent(token)}`);const data=await r.json();
+  if(!r.ok) throw new Error();
+  if(data.status==='approved'&&data.licenseKey){label.textContent='PAGAMENTO APROVADO';title.textContent='Compra concluída!';message.textContent='Seu pagamento foi confirmado e sua licença já está disponível.';keyEl.textContent=data.licenseKey;box.classList.remove('hidden');return;}
+  if(data.status==='payment_mismatch'){label.textContent='VERIFICAÇÃO NECESSÁRIA';title.textContent='Pagamento em análise';message.textContent='Identificamos uma divergência nos dados do pagamento. Entre em contato com o suporte.';return;}
+  if(result==='failure'||['rejected','cancelled','refunded','charged_back'].includes(data.status)){showFailure();return;}
+  attempts++;label.textContent='AGUARDANDO CONFIRMAÇÃO';title.textContent='Pagamento sendo confirmado';message.textContent='O Mercado Pago ainda está processando a confirmação. Esta página será atualizada automaticamente.';
+  if(attempts<30)setTimeout(check,3000);else message.textContent='A confirmação está demorando mais que o normal. Você pode manter esta página aberta ou voltar mais tarde pelo mesmo endereço.';
+ }catch{attempts++;message.textContent='Não conseguimos consultar a confirmação agora. Tentaremos novamente automaticamente.';if(attempts<30)setTimeout(check,3000);}
+}
+document.getElementById('copyKey').addEventListener('click',async()=>{await navigator.clipboard.writeText(keyEl.textContent);document.getElementById('copyKey').textContent='KEY copiada!';});
+check();
+</script>
+</body></html>
