@@ -25,12 +25,20 @@
 </section></main>
 <script>
 const API_URL='https://titanturbopro-api.onrender.com';
-const qs=new URLSearchParams(location.search);const token=qs.get('token');const result=qs.get('result');
+const qs=new URLSearchParams(location.search);
+let token=qs.get('token');
+const result=qs.get('result');
+if(!token){
+ try{
+  const saved=JSON.parse(sessionStorage.getItem('titanOrder')||localStorage.getItem('titanLastOrder')||'null');
+  if(saved?.checkoutToken) token=saved.checkoutToken;
+ }catch{}
+}
 const label=document.getElementById('statusLabel'),title=document.getElementById('title'),message=document.getElementById('message'),box=document.getElementById('licenseBox'),keyEl=document.getElementById('licenseKey');
 let attempts=0;
 function showFailure(){label.textContent='PAGAMENTO NÃO CONCLUÍDO';title.textContent='Pagamento não aprovado';message.textContent='Você pode voltar aos planos e tentar novamente. Nenhuma licença foi liberada.';}
 async function check(){
- if(!token){showFailure();return;}
+ if(!token){label.textContent='COMPRA NÃO LOCALIZADA';title.textContent='Não encontramos os dados desta compra';message.textContent='Volte ao checkout pelo mesmo navegador ou entre em contato com o suporte informando o e-mail usado na compra.';return;}
  try{
   const r=await fetch(`${API_URL}/api/payment/status?token=${encodeURIComponent(token)}`);const data=await r.json();
   if(!r.ok) throw new Error();
@@ -38,10 +46,10 @@ async function check(){
   if(data.status==='payment_mismatch'){label.textContent='VERIFICAÇÃO NECESSÁRIA';title.textContent='Pagamento em análise';message.textContent='Identificamos uma divergência nos dados do pagamento. Entre em contato com o suporte.';return;}
   if(result==='failure'||['rejected','cancelled','refunded','charged_back'].includes(data.status)){showFailure();return;}
   attempts++;label.textContent='AGUARDANDO CONFIRMAÇÃO';title.textContent='Pagamento sendo confirmado';message.textContent='O Mercado Pago ainda está processando a confirmação. Esta página será atualizada automaticamente.';
-  if(attempts<30)setTimeout(check,3000);else message.textContent='A confirmação está demorando mais que o normal. Você pode manter esta página aberta ou voltar mais tarde pelo mesmo endereço.';
- }catch{attempts++;message.textContent='Não conseguimos consultar a confirmação agora. Tentaremos novamente automaticamente.';if(attempts<30)setTimeout(check,3000);}
+  if(attempts<40)setTimeout(check,3000);else message.textContent='A confirmação está demorando mais que o normal. Guarde esta página e tente novamente em alguns minutos.';
+ }catch{attempts++;message.textContent='Não conseguimos consultar a confirmação agora. Tentaremos novamente automaticamente.';if(attempts<40)setTimeout(check,3000);}
 }
-document.getElementById('copyKey').addEventListener('click',async()=>{await navigator.clipboard.writeText(keyEl.textContent);document.getElementById('copyKey').textContent='KEY copiada!';});
+document.getElementById('copyKey').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(keyEl.textContent);document.getElementById('copyKey').textContent='KEY copiada!';}catch{}});
 check();
 </script>
 </body></html>
