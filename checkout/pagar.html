@@ -32,7 +32,7 @@ else {
   const mp = document.getElementById('mpBtn');
   if (link) { mp.href = link; mp.target = '_blank'; }
   else { mp.addEventListener('click', (e) => { e.preventDefault(); alert('Falta configurar o link do Mercado Pago em config.js (mpLink do plano). Enquanto isso, feche o pedido no WhatsApp.'); }); }
-  const text = encodeURIComponent('Pedido Titan Turbo\nPlano: ' + order.name + '\nE-mail: ' + order.email + '\nTotal: R$ ' + order.total.toFixed(2).replace('.', ',') + '\n(após pagar envio o código da máquina do app)');
+  const text = encodeURIComponent('Pedido Titan Turbo\nPlano: ' + order.name + '\nE-mail: ' + order.email + '\nTotal: R$ ' + order.total.toFixed(2).replace('.', ',') + '\nA KEY é gerada automaticamente após a aprovação do pagamento.');
   document.getElementById('waBtn').href = 'https://wa.me/' + cfg.whatsapp + '?text=' + text;
 }
 </script>
