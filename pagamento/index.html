@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pagamento — Titan Turbo</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Confirmação segura de pagamento e liberação de licença Titan Turbo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../logo.css">
@@ -15,10 +17,12 @@
   <div id="licenseBox" class="hidden"><p class="muted">Sua KEY TitanTurboPRO:</p><div class="key" id="licenseKey"></div><button class="buy" id="copyKey" type="button">Copiar KEY</button><p class="muted">Guarde esta chave. Abra o TitanTurboPRO e use-a na tela de ativação.</p></div>
   <div class="actions"><a class="buy" href="/download/">Baixar aplicativo</a><a class="buy" href="/">Voltar ao início</a></div>
 </section></main>
+<script src="/tracking-config.js"></script>
+<script src="/analytics.js"></script>
 <script>
 const API_URL='https://titanturbopro-api.onrender.com';
 const qs=new URLSearchParams(location.search);let token=qs.get('token');const result=qs.get('result');const paymentId=qs.get('payment_id')||qs.get('collection_id');
-if(!token){try{const saved=JSON.parse(sessionStorage.getItem('titanOrder')||localStorage.getItem('titanLastOrder')||'null');if(saved?.checkoutToken)token=saved.checkoutToken;}catch{}}
+let savedOrder=null;if(!token){try{savedOrder=JSON.parse(sessionStorage.getItem('titanOrder')||'null');if(savedOrder?.checkoutToken)token=savedOrder.checkoutToken;}catch{}}else{try{savedOrder=JSON.parse(sessionStorage.getItem('titanOrder')||'null');}catch{}}
 const label=document.getElementById('statusLabel'),title=document.getElementById('title'),message=document.getElementById('message'),box=document.getElementById('licenseBox'),keyEl=document.getElementById('licenseKey');let attempts=0,reconciled=false;
 function showFailure(){label.textContent='PAGAMENTO NÃO CONCLUÍDO';title.textContent='Pagamento não aprovado';message.textContent='Você pode voltar aos planos e tentar novamente. Nenhuma licença foi liberada.';}
 async function reconcile(){if(reconciled||!token||!paymentId)return;reconciled=true;try{await fetch(`${API_URL}/api/payment/reconcile`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,paymentId})});}catch{reconciled=false;}}
@@ -27,7 +31,31 @@ async function check(){
  try{
   if((result==='success'||qs.get('status')==='approved')&&paymentId)await reconcile();
   const r=await fetch(`${API_URL}/api/payment/status?token=${encodeURIComponent(token)}`);const data=await r.json();if(!r.ok)throw new Error();
-  if(data.status==='approved'&&data.licenseKey){label.textContent='PAGAMENTO APROVADO';title.textContent='Compra concluída!';message.textContent='Seu pagamento foi confirmado e sua licença já está disponível.';keyEl.textContent=data.licenseKey;box.classList.remove('hidden');return;}
+  if(data.status==='approved'&&data.licenseKey){
+    label.textContent='PAGAMENTO APROVADO';
+    title.textContent='Compra concluída!';
+    message.textContent='Seu pagamento foi confirmado e sua licença já está disponível.';
+    keyEl.textContent=data.licenseKey;
+    box.classList.remove('hidden');
+
+    const trackedId=paymentId||data.paymentId||data.payment_id||'approved-session';
+    const trackKey='titan_purchase_tracked_'+trackedId;
+    if(!sessionStorage.getItem(trackKey)){
+      const planId=savedOrder?.plan||data.plan;
+      const fallbackPrice=planId==='life'?139.90:planId==='once'?59.90:undefined;
+      const value=Number(savedOrder?.total??data.amount??data.value??fallbackPrice);
+      window.TitanTracking?.track('purchase',{
+        transaction_id: paymentId||data.paymentId||data.payment_id||undefined,
+        item_id: planId,
+        item_name: savedOrder?.name||data.planName||(planId==='life'?'APP VITALÍCIO':planId==='once'?'APP USO ÚNICO':undefined),
+        value:Number.isFinite(value)?value:undefined,
+        currency:'BRL',
+        quantity:1
+      });
+      sessionStorage.setItem(trackKey,'1');
+    }
+    return;
+  }
   if(data.status==='payment_mismatch'){label.textContent='VERIFICAÇÃO NECESSÁRIA';title.textContent='Pagamento em análise';message.textContent='Identificamos uma divergência nos dados do pagamento. Entre em contato com o suporte.';return;}
   if(result==='failure'||['rejected','cancelled','refunded','charged_back'].includes(data.status)){showFailure();return;}
   attempts++;label.textContent='AGUARDANDO CONFIRMAÇÃO';title.textContent='Pagamento sendo confirmado';message.textContent='O Mercado Pago ainda está processando a confirmação. Esta página será atualizada automaticamente.';if(attempts<40)setTimeout(check,3000);else message.textContent='A confirmação está demorando mais que o normal. Guarde esta página e tente novamente em alguns minutos.';
