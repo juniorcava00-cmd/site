@@ -5,6 +5,25 @@ const plan = cfg.plans[planId];
 const brl = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const API_URL = 'https://titanturbopro-api.onrender.com';
 
+const couponInput = document.getElementById('coupon');
+const couponStatus = document.getElementById('couponStatus');
+const applyCouponButton = document.getElementById('applyCoupon');
+const normalizeCoupon = (value) => value.trim().toUpperCase().replace(/\s+/g, '');
+
+const couponFromLink = params.get('coupon') || params.get('cupom');
+if (couponInput && couponFromLink) couponInput.value = normalizeCoupon(couponFromLink);
+
+applyCouponButton?.addEventListener('click', () => {
+  const code = normalizeCoupon(couponInput?.value || '');
+  if (!code) {
+    couponStatus.textContent = 'Digite um código de cupom para continuar.';
+    return;
+  }
+  if (couponInput) couponInput.value = code;
+  sessionStorage.setItem('titanCouponCandidate', code);
+  couponStatus.textContent = `Cupom ${code} preenchido. A validação automática e o desconto serão habilitados nas campanhas de parceiros; por enquanto o valor da compra não é alterado.`;
+});
+
 document.getElementById('planName').textContent = plan.name;
 document.getElementById('planPrice').textContent = brl(plan.price);
 document.getElementById('planTotal').textContent = brl(plan.price);
@@ -23,6 +42,7 @@ document.getElementById('checkoutForm').addEventListener('submit', async (e) => 
 
   const emailInput = document.getElementById('email');
   const email = emailInput.value.trim();
+  const coupon = normalizeCoupon(couponInput?.value || '');
   if (!email) return;
 
   const submitButton = e.currentTarget.querySelector('button[type="submit"], input[type="submit"]');
@@ -64,6 +84,7 @@ document.getElementById('checkoutForm').addEventListener('submit', async (e) => 
       name: plan.name,
       total: plan.price,
       checkoutToken,
+      couponCandidate: coupon || undefined,
       createdAt: new Date().toISOString()
     }));
 
