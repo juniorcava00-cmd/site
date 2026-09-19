@@ -11,11 +11,11 @@
   <style>.wrap{max-width:760px;margin:70px auto;padding:0 20px}.card{border:1px solid #123b62;border-radius:18px;background:linear-gradient(145deg,#071525,#020812);padding:32px;text-align:center}.muted{color:#8fa8bf;line-height:1.6}.key{font-family:Consolas,monospace;font-size:18px;color:#60A5FA;background:#030b14;border:1px solid #1a527e;border-radius:12px;padding:16px;word-break:break-all;margin:20px 0}.hidden{display:none}.status{font-size:12px;letter-spacing:.12em;color:#4caeff;font-weight:800}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}</style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a><nav><a href="/">Início</a><a href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a href="/download/">Download</a><a href="/faq/">FAQ</a></nav></header>
+<header class="topbar"><a class="brand" href="/"><span>TITAN</span><b>TURBO</b><i>◒</i></a><nav><a href="/">Início</a><a href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a href="/download/">Download</a><a href="/faq/">FAQ</a></nav><details class="mobile-nav"><summary>Menu</summary><div><a href="/">Início</a><a href="/app/">Sobre o App</a><a href="/planos/">Planos</a><a href="/download/">Download</a><a href="/faq/">FAQ</a></div></details></header>
 <main class="wrap"><section class="card">
   <div class="status" id="statusLabel">VERIFICANDO PAGAMENTO</div><h1 id="title">Aguarde um instante...</h1><p class="muted" id="message">Estamos confirmando seu pagamento com segurança.</p>
   <div id="licenseBox" class="hidden"><p class="muted">Sua KEY TitanTurboPRO:</p><div class="key" id="licenseKey"></div><button class="buy" id="copyKey" type="button">Copiar KEY</button><p class="muted">Guarde esta chave. Abra o TitanTurboPRO e use-a na tela de ativação.</p></div>
-  <div class="actions"><a class="buy" href="/download/">Baixar aplicativo</a><a class="buy" href="/">Voltar ao início</a></div>
+  <div class="actions"><a class="buy" data-track-download href="/download/">Baixar aplicativo</a><a class="buy" href="https://wa.me/5519992597816" target="_blank" rel="noopener">Suporte WhatsApp</a><a class="buy" href="/">Voltar ao início</a></div>
 </section></main>
 <script src="/tracking-config.js"></script>
 <script src="/analytics.js"></script>
