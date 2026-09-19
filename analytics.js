@@ -90,7 +90,25 @@
       purchase: "purchase",
       download: "file_download"
     };
-    window.gtag("event", map[name] || name, clean(data));
+    const value = safeNumber(data.value);
+    const params = clean({
+      currency: data.currency || (value !== undefined ? "BRL" : undefined),
+      value,
+      transaction_id: data.transaction_id,
+      item_list_id: data.item_list_id,
+      item_list_name: data.item_list_name,
+      file_name: name === "download" ? data.item_name : undefined,
+      link_url: name === "download" ? location.href : undefined
+    });
+    if (data.item_id) {
+      params.items = [{
+        item_id: String(data.item_id),
+        item_name: data.item_name || String(data.item_id),
+        price: value,
+        quantity: data.quantity || 1
+      }];
+    }
+    window.gtag("event", map[name] || name, params);
   }
 
   function metaEvent(name, data) {
@@ -118,7 +136,7 @@
     const payload = clean({
       value,
       currency: data.currency || (value !== undefined ? "BRL" : undefined),
-      content_id: data.item_id ? String(data.item_id) : undefined,
+      content_ids: data.item_id ? [String(data.item_id)] : undefined,
       content_name: data.item_name,
       content_type: data.item_id ? "product" : undefined,
       quantity: data.quantity || (data.item_id ? 1 : undefined)
