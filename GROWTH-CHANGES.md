@@ -15,3 +15,10 @@ Aplicado em 18/09/2026.
 
 Backup anterior às mudanças:
 `backup-pre-growth-audit-20260918`
+
+## Ajuste complementar — redes e cupons
+
+- Campo de cupom restaurado no checkout para futuras parcerias com YouTubers, streamers e creators.
+- Estrutura preparada para códigos vindos por link, sem aplicar desconto no frontend antes da validação segura no backend.
+- Instagram, TikTok e WhatsApp movidos para ícones no cabeçalho, à esquerda de "Comprar Agora".
+- Links sociais em texto removidos do rodapé para reduzir duplicação visual.
