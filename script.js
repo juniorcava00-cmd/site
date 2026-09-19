@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     plans.innerHTML = `
       <div class="eyebrow">ESCOLHA SEU PLANO</div>
       <h2>Escolha o plano ideal<br><em>para você.</em></h2>
-      <p class="plans-intro">Acesso completo ao Titan Turbo. Uso único perde a KEY se formatar. Vitalício fica no mesmo PC mesmo formatando.</p>
+      <p class="plans-intro">Acesso completo ao Titan Turbo. Uso Único é válido até a formatação; Vitalício pode ser reativado no mesmo PC.</p>
       <div class="plans-layout">
         <article class="plan-card">
           <span class="plan-tag">ECONOMIZE 20%</span>
