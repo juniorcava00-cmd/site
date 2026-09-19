@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <a class="plan-button" data-track-plan data-plan-id="life" data-plan-name="APP VITALÍCIO" data-plan-price="139.90" href="/checkout/?plan=life">COMPRAR APP</a>
         </article>
       </div>`;
+  }
+  if (plans) {
     window.TitanTracking?.track('view_item_list', {
       item_list_id: 'titanturbo-plans',
       item_list_name: 'Planos Titan Turbo'
