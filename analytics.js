@@ -88,7 +88,8 @@
       select_item: "select_item",
       begin_checkout: "begin_checkout",
       purchase: "purchase",
-      download: "file_download"
+      download: "file_download",
+      contact: "generate_lead"
     };
     const value = safeNumber(data.value);
     const params = clean({
@@ -124,7 +125,8 @@
     const map = {
       view_item: "ViewContent",
       begin_checkout: "InitiateCheckout",
-      purchase: "Purchase"
+      purchase: "Purchase",
+      contact: "Contact"
     };
     if (map[name]) window.fbq("track", map[name], common);
     else window.fbq("trackCustom", name === "download" ? "Download" : name, common);
@@ -145,9 +147,10 @@
       view_item: "ViewContent",
       begin_checkout: "InitiateCheckout",
       purchase: "Purchase",
-      download: "Download"
+      download: "Download",
+      contact: "Contact"
     };
-    window.ttq.track(map[name] || name, payload);
+    if (map[name]) window.ttq.track(map[name], payload);
   }
 
   function dispatch(name, data = {}) {
@@ -218,6 +221,9 @@
     document.addEventListener("click", (event) => {
       const dl = event.target.closest("[data-track-download]");
       if (dl) track("download", { item_name: "TitanTurboPRO", item_id: "titanturbo-download" });
+
+      const wa = event.target.closest('a[href*="wa.me/"]');
+      if (wa) track("contact", { item_name: "WhatsApp Titan Turbo" });
 
       const plan = event.target.closest("[data-track-plan]");
       if (plan) track("select_item", {
