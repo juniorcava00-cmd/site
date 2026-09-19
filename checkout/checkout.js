@@ -10,6 +10,14 @@ document.getElementById('planPrice').textContent = brl(plan.price);
 document.getElementById('planTotal').textContent = brl(plan.price);
 document.getElementById('planBlurb').textContent = plan.blurb;
 
+window.TitanTracking?.track('view_item', {
+  item_id: plan.id,
+  item_name: plan.name,
+  value: plan.price,
+  currency: 'BRL',
+  quantity: 1
+});
+
 document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -19,6 +27,14 @@ document.getElementById('checkoutForm').addEventListener('submit', async (e) => 
 
   const submitButton = e.currentTarget.querySelector('button[type="submit"], input[type="submit"]');
   const originalText = submitButton?.textContent;
+
+  window.TitanTracking?.track('begin_checkout', {
+    item_id: plan.id,
+    item_name: plan.name,
+    value: plan.price,
+    currency: 'BRL',
+    quantity: 1
+  });
 
   try {
     if (submitButton) {
@@ -42,16 +58,14 @@ document.getElementById('checkoutForm').addEventListener('submit', async (e) => 
     if (!checkoutUrl) throw new Error('O Mercado Pago não retornou o endereço de pagamento.');
     if (!checkoutToken) throw new Error('O servidor não retornou o identificador seguro da compra.');
 
-    const order = {
+    // O e-mail é mantido apenas durante a sessão atual e não é enviado aos pixels.
+    sessionStorage.setItem('titanOrder', JSON.stringify({
       plan: planId,
       name: plan.name,
-      email,
       total: plan.price,
       checkoutToken,
       createdAt: new Date().toISOString()
-    };
-    sessionStorage.setItem('titanOrder', JSON.stringify(order));
-    localStorage.setItem('titanLastOrder', JSON.stringify(order));
+    }));
 
     window.location.href = checkoutUrl;
   } catch (error) {
