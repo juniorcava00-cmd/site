@@ -52,6 +52,12 @@
       <label for="email">E-mail da compra</label>
       <input id="email" type="email" required placeholder="voce@email.com" autocomplete="email">
       <p class="muted">Use um e-mail válido e que você acessa. Ele ficará vinculado à sua compra e à licença gerada após a aprovação do pagamento.</p>
+      <label for="coupon">Cupom de desconto</label>
+      <div class="row2">
+        <input id="coupon" name="coupon" autocomplete="off" maxlength="40" placeholder="Ex.: CANAL10">
+        <button class="buy" id="applyCoupon" type="button">Aplicar</button>
+      </div>
+      <p class="muted" id="couponStatus">Área preparada para cupons de parceiros, creators e campanhas promocionais.</p>
       <button class="buy wide" type="submit" style="margin-top:22px">Continuar para pagamento</button>
       <p class="pay-note">Pix ou cartão de crédito na próxima etapa, processados pelo Mercado Pago. Ao continuar, você concorda com os <a href="/termos/">Termos de Uso</a> e a <a href="/privacidade/">Política de Privacidade</a>.</p>
     </form>
