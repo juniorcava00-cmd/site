@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <ul>
             <li>Aplicativo válido até formatar o PC.</li>
             <li>Limpeza profunda.</li>
-            <li>Boost de FPS imediato.</li>
+            <li>Otimizações voltadas a FPS.</li>
             <li>Redução de input lag.</li>
             <li>Suporte no WhatsApp.</li>
           </ul>
-          <a class="plan-button" href="/checkout/?plan=once">COMPRAR APP</a>
+          <a class="plan-button" data-track-plan data-plan-id="once" data-plan-name="APP USO ÚNICO" data-plan-price="59.90" href="/checkout/?plan=once">COMPRAR APP</a>
         </article>
         <article class="plan-card featured">
           <span class="plan-tag">MAIS POPULAR</span>
@@ -50,13 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>1 computador. Pode formatar o mesmo PC.</p>
           <ul>
             <li>Acesso vitalício neste hardware.</li>
-            <li>Atualizações garantidas.</li>
+            <li>Atualizações do aplicativo.</li>
             <li>Limpeza profunda.</li>
             <li>Redução de input lag.</li>
             <li>Suporte no WhatsApp.</li>
           </ul>
-          <a class="plan-button" href="/checkout/?plan=life">COMPRAR APP</a>
+          <a class="plan-button" data-track-plan data-plan-id="life" data-plan-name="APP VITALÍCIO" data-plan-price="139.90" href="/checkout/?plan=life">COMPRAR APP</a>
         </article>
       </div>`;
+    window.TitanTracking?.track('view_item_list', {
+      item_list_id: 'titanturbo-plans',
+      item_list_name: 'Planos Titan Turbo'
+    });
   }
 });
